@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>Cuatro en Raya</h1>
     <p>
-      ¡Lucha contra la máquina!
+      {{msg}}
     </p>
     
       <div class="main">
@@ -116,14 +116,16 @@ export default {
             y3: ['', '', '', ''],
             y4: ['', '', '', ''],
             turn: 0,    //0: Jugador, 1: Máquina
-            Mobjective: null    //Objetivo actual de la máquina
+            mObjective: null,    //Objetivo actual de la máquina
+            msg: "¡Lucha contra la máquina!",
+            victory: false
         };
     },
 
     methods: {
         playerMove(y, x) {
 
-            if (this.turn == 0) {
+            if (this.turn == 0 && !this.victory) {
                 switch (y) {
                     case 1:
                         if (this.y1[x - 1] == '') {
@@ -131,6 +133,9 @@ export default {
 
                             if (!this.checkVictory()) {
                                 this.machineMove();
+                            } else {
+                                this.victory = true;
+                                this.msg = "¡Victoria del jugador!";
                             }
                             
 
@@ -145,6 +150,9 @@ export default {
 
                             if (!this.checkVictory()) {
                                 this.machineMove();
+                            } else {
+                                this.victory = true;
+                                this.msg = "¡Victoria del jugador!";
                             }
 
                         } else {
@@ -158,6 +166,9 @@ export default {
 
                             if (!this.checkVictory()) {
                                 this.machineMove();
+                            } else {
+                                this.victory = true;
+                                this.msg = "¡Victoria del jugador!";
                             }
 
                         } else {
@@ -171,6 +182,9 @@ export default {
 
                             if (!this.checkVictory()) {
                                 this.machineMove();
+                            } else {
+                                this.victory = true;
+                                this.msg = "¡Victoria del jugador!";
                             }
 
                         } else {
@@ -231,7 +245,6 @@ export default {
             }
             
             if (victoryFlag) {
-                alert("victoria");
                 return true; //victoria
             } else {
                 return false; //continua
@@ -305,7 +318,9 @@ export default {
             this.y3 = ['', '', '', ''];
             this.y4 = ['', '', '', ''];
             this.turn = 0;
-            this.Mobjective = null;
+            this.mObjective = null;
+            this.victory = false;
+            this.msg = "¡Lucha contra la máquina!";
         }
     },
 
@@ -315,7 +330,9 @@ export default {
         this.y3 = ['', '', '', ''];
         this.y4 = ['', '', '', ''];
         this.turn = 0;
-        this.Mobjective = null;
+        this.mObjective = null;
+        this.victory = false;
+        this.msg = "¡Lucha contra la máquina!";
         console.log("Listo para empezar a jugar");
     },
 }
