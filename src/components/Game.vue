@@ -97,7 +97,7 @@
               </b-row>
               <b-row>
                   <b-col>
-                      <b-button variant="danger">Reset</b-button>
+                      <b-button variant="danger" v-on:click="reset()">Reset</b-button>
                   </b-col>
               </b-row>
           </div>
@@ -106,6 +106,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Game',
     data() {
@@ -114,7 +115,8 @@ export default {
             y2: ['', '', '', ''],
             y3: ['', '', '', ''],
             y4: ['', '', '', ''],
-            turn:0,    //0: Jugador, 1: Máquina
+            turn: 0,    //0: Jugador, 1: Máquina
+            Mobjective: null    //Objetivo actual de la máquina
         };
     },
 
@@ -126,6 +128,12 @@ export default {
                     case 1:
                         if (this.y1[x - 1] == '') {
                             this.y1[x - 1] = '0';
+
+                            if (!this.checkVictory()) {
+                                this.machineMove();
+                            }
+                            
+
                         } else {
                             console.log("Ya jugada");
                         }
@@ -134,6 +142,10 @@ export default {
                     case 2:
                         if (this.y2[x - 1] == '') {
                             this.y2[x - 1] = '0';
+
+                            if (!this.checkVictory()) {
+                                this.machineMove();
+                            }
 
                         } else {
                             console.log("Ya jugada");
@@ -144,6 +156,10 @@ export default {
                         if (this.y3[x - 1] == '') {
                             this.y3[x - 1] = '0';
 
+                            if (!this.checkVictory()) {
+                                this.machineMove();
+                            }
+
                         } else {
                             console.log("Ya jugada");
                         }
@@ -152,6 +168,10 @@ export default {
                     case 4:
                         if (this.y4[x - 1] == '') {
                             this.y4[x - 1] = '0';
+
+                            if (!this.checkVictory()) {
+                                this.machineMove();
+                            }
 
                         } else {
                             console.log("Ya jugada");
@@ -162,6 +182,130 @@ export default {
             } else {
                 console.log("¡Impaciente!");
             }
+        },
+
+        machineMove() {
+
+        },
+
+        checkVictory() {
+
+            let victoryFlag = false;
+
+            if (!this.y1.includes('')) {
+
+                if (this.checkLine('y1')) {
+                    victoryFlag = true;
+                }
+
+            } else if (!this.y2.includes('')) {
+
+                if (this.checkLine('y2')) {
+                    victoryFlag = true;
+                }
+
+            } else if (!this.y3.includes('')) {
+
+                if (this.checkLine('y3')) {
+                    victoryFlag = true;
+                }
+
+            } else if (!this.y4.includes('')) {
+
+                if (this.checkLine('y4')) {
+                    victoryFlag = true;
+                }
+
+            } else if (this.y1[0] != '' && this.y2[1] != '' && this.y3[2] != '' && this.y4[3] != '') {
+
+                if (this.checkLine('d1')) {
+                    victoryFlag = true;
+                }
+
+            } else if (this.y4[0] != '' && this.y3[1] != '' && this.y2[2] != '' && this.y1[3] != '') {
+
+                if (this.checkLine('d2')) {
+                    victoryFlag = true;
+                }
+
+            }
+            
+            if (victoryFlag) {
+                alert("victoria");
+                return true; //victoria
+            } else {
+                return false; //continua
+            }
+        },
+
+        checkLine(line) {
+
+            let allEqual = true;
+
+            if (line == 'y1') {
+                
+                let searchVal = this.y1[0];
+
+                for (var i1 = 0; i1 < this.y1; i1++) {
+                    if (this.y1[i1] != searchVal) {
+                        allEqual = false;
+                    }
+                }
+            } else if (line == 'y2') {
+
+                let searchVal = this.y1[0];
+
+                for (var i2 = 0; i2 < this.y2; i2++) {
+                    if (this.y2[i2] != searchVal) {
+                        allEqual = false;
+                    }
+                }
+            } else if (line == 'y3') {
+
+                let searchVal = this.y1[0];
+
+                for (var i3 = 0; i3 < this.y3; i3++) {
+                    if (this.y3[i3] != searchVal) {
+                        allEqual = false;
+                    }
+                }
+            } else if (line == 'y4') {
+
+                let searchVal = this.y1[0];
+
+                for (var i4 = 0; i4 < this.y4; i4++) {
+                    if (this.y4[i4] != searchVal) {
+                        allEqual = false;
+                    }
+                }
+            } else if (line == 'd1') {
+
+                let searchVal = this.y1[0];
+
+                if (this.y1[0] != searchVal || this.y2[1] != searchVal || this.y3[2] != searchVal || this.y4[3] != searchVal) {
+                    allEqual = false;
+                }
+            } else if (line == 'd2') {
+
+                let searchVal = this.y4[0];
+
+                if (this.y4[0] != searchVal || this.y3[1] != searchVal || this.y2[2] != searchVal || this.y1[3] != searchVal) {
+                    allEqual = false;
+                }
+            }
+
+            if (allEqual) {
+                return true
+            }
+        },
+
+        reset() {
+            this.y1 = ['', '', '', ''];
+            this.y2 = ['', '', '', ''];
+            this.y3 = ['', '', '', ''];
+            this.y4 = ['', '', '', ''];
+            this.turn = 0;
+            this.Mobjective = null;
         }
     },
 
@@ -170,6 +314,8 @@ export default {
         this.y2 = ['', '', '', ''];
         this.y3 = ['', '', '', ''];
         this.y4 = ['', '', '', ''];
+        this.turn = 0;
+        this.Mobjective = null;
         console.log("Listo para empezar a jugar");
     },
 }
