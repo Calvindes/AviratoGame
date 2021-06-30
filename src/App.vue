@@ -1,16 +1,25 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
+﻿<template>
+  <img alt="Game logo" :src="images.logo">
   <Game/>
 </template>
 
 <script>
     import Game from './components/Game.vue'
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'App',
   components: {
       Game
-  }
+  },
+  data() {
+            return {
+                images: {
+                    logo: require('./assets/logo.png')
+                }
+            }
+        }
 }
 </script>
 

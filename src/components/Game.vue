@@ -1,4 +1,4 @@
-<template>
+ï»¿<template>
   <div class="hello">
     <h1>Cuatro en Raya</h1>
     <p>
@@ -97,7 +97,7 @@
               </b-row>
               <b-row>
                   <b-col>
-                      <b-button variant="danger" v-on:click="reset()">Reset</b-button>
+                      <button v-on:click="reset()">Reset</button>
                   </b-col>
               </b-row>
           </div>
@@ -115,9 +115,9 @@ export default {
             y2: ['', '', '', ''],
             y3: ['', '', '', ''],
             y4: ['', '', '', ''],
-            turn: 0,    //0: Jugador, 1: Máquina
-            mObjective: null,    //Objetivo actual de la máquina
-            msg: "¡Lucha contra la máquina!",
+            turn: 0,    //0: Jugador, 1: Mï¿½quina
+            mObjective: null,    //Objetivo actual de la mï¿½quina
+            msg: "ï¿½Lucha contra la mï¿½quina!",
             victory: false
         };
     },
@@ -132,7 +132,7 @@ export default {
                             this.y1[x - 1] = '0';
 
                             if (!this.checkVictory()) {
-                                this.turn = 1; //turno de la máquina
+                                this.turn = 1; //turno de la mï¿½quina
                                 this.machineMove();
                             }
                             
@@ -147,7 +147,7 @@ export default {
                             this.y2[x - 1] = '0';
 
                             if (!this.checkVictory()) {
-                                this.turn = 1; //turno de la máquina
+                                this.turn = 1; //turno de la mï¿½quina
                                 this.machineMove();
                             }
 
@@ -161,7 +161,7 @@ export default {
                             this.y3[x - 1] = '0';
 
                             if (!this.checkVictory()) {
-                                this.turn = 1; //turno de la máquina
+                                this.turn = 1; //turno de la mï¿½quina
                                 this.machineMove();
                             }
 
@@ -175,7 +175,7 @@ export default {
                             this.y4[x - 1] = '0';
 
                             if (!this.checkVictory()) {
-                                this.turn = 1; //turno de la máquina
+                                this.turn = 1; //turno de la mï¿½quina
                                 this.machineMove();
                             }
 
@@ -186,18 +186,18 @@ export default {
                 }
 
             } else {
-                this.msg = "¡Impaciente!";
+                this.msg = "ï¿½Impaciente!";
             }
         },
 
-        machineMove() {//Movimiento de máquina
+        machineMove() {//Movimiento de mï¿½quina
             if (this.mObjective == null) {//Buscar un objetivo
                 this.machineSearch();
             }
 
             var ObjViable = true; //Objetivo viable
 
-            if (this.mObjective != false) {//Si la máquina aún tiene posibilidades
+            if (this.mObjective != false) {//Si la mï¿½quina aï¿½n tiene posibilidades
                 
                 switch (this.mObjective) {
                     case 'y1':
@@ -210,14 +210,14 @@ export default {
                             }
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
                             for (let indY1 = 0; indY1 < this.y1.length; indY1++) {
                                 if (this.y1[indY1] == '') {
                                     this.y1[indY1] = '1';//Marcar siguiente casilla
                                     break;
                                 }
                             }
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -233,14 +233,14 @@ export default {
                             }
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
                             for (let indY2 = 0; indY2 < this.y2.length; indY2++) {
                                 if (this.y2[indY2] == '') {
                                     this.y2[indY2] = '1';//Marcar siguiente casilla
                                     break;
                                 }
                             }
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -256,14 +256,14 @@ export default {
                             }
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
                             for (let indY3 = 0; indY3 < this.y3.length; indY3++) {
                                 if (this.y3[indY3] == '') {
                                     this.y3[indY3] = '1';//Marcar siguiente casilla
                                     break;
                                 }
                             }
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -279,14 +279,14 @@ export default {
                             }
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
                             for (let indY4 = 0; indY4 < this.y4.length; indY4++) {
                                 if (this.y4[indY4] == '') {
                                     this.y4[indY4] = '1';//Marcar siguiente casilla
                                     break;
                                 }
                             }
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -301,7 +301,7 @@ export default {
                             return false;
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
 
                             //Marcar siguiente casilla
                             if (this.y1[0] == '') {
@@ -317,7 +317,7 @@ export default {
                                 this.y4[3] = '1';
                             }
 
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -332,7 +332,7 @@ export default {
                             return false;
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
 
                             //Marcar siguiente casilla
                             if (this.y4[0] == '') {
@@ -348,7 +348,7 @@ export default {
                                 this.y1[3] = '1';
                             }
 
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -363,7 +363,7 @@ export default {
                             return false;
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
 
                             //Marcar siguiente casilla
                             if (this.y1[0] == '') {
@@ -379,7 +379,7 @@ export default {
                                 this.y4[0] = '1';
                             }
 
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -394,7 +394,7 @@ export default {
                             return false;
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
 
                             //Marcar siguiente casilla
                             if (this.y1[1] == '') {
@@ -410,7 +410,7 @@ export default {
                                 this.y4[1] = '1';
                             }
 
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -425,7 +425,7 @@ export default {
                             return false;
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
 
                             //Marcar siguiente casilla
                             if (this.y1[2] == '') {
@@ -441,7 +441,7 @@ export default {
                                 this.y4[2] = '1';
                             }
 
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
@@ -456,7 +456,7 @@ export default {
                             return false;
                         }
 
-                        if (ObjViable) {//la línea es viable
+                        if (ObjViable) {//la lï¿½nea es viable
 
                             //Marcar siguiente casilla
                             if (this.y1[3] == '') {
@@ -472,15 +472,15 @@ export default {
                                 this.y4[3] = '1';
                             }
 
-                        } else {//la línea ya no es viable
+                        } else {//la lï¿½nea ya no es viable
                             this.machineMove()
                             return false;
                         }
                     break;
                 }
 
-            } else {//Si la máquina está sin posibilidades
-                this.msg = "¡Oye!";
+            } else {//Si la mï¿½quina estï¿½ sin posibilidades
+                this.msg = "ï¿½Oye!";
             }
 
             if (!this.checkVictory()) {
@@ -488,10 +488,10 @@ export default {
             }
         },
 
-        machineSearch() {//Máquina busca objetivo para completar
-            var posibilities = ['y1', 'y2', 'y3', 'y4', 'd1', 'd2', 'x1', 'x2', 'x3', 'x4'];//Posibilidades para línea
+        machineSearch() {//Mï¿½quina busca objetivo para completar
+            var posibilities = ['y1', 'y2', 'y3', 'y4', 'd1', 'd2', 'x1', 'x2', 'x3', 'x4'];//Posibilidades para lï¿½nea
 
-            //Eliminar líneas ocupadas
+            //Eliminar lï¿½neas ocupadas
             //Y1
             for (var indY1 = 0; indY1 < this.y1.length; indY1++) {
                 if (this.y1[indY1] == '0') {
@@ -672,9 +672,9 @@ export default {
                 this.victory = true;
 
                 if (this.turn == 0) {
-                    this.msg = "¡Victoria del jugador! >:(";
+                    this.msg = "ï¿½Victoria del jugador! >:(";
                 } else {
-                    this.msg = "¡La máquina gana! ;)"
+                    this.msg = "ï¿½La mï¿½quina gana! ;)"
                 }
                 return true; //victoria
             } else {
@@ -781,7 +781,7 @@ export default {
             this.turn = 0;
             this.mObjective = null;
             this.victory = false;
-            this.msg = "¡Lucha contra la máquina!";
+            this.msg = "ï¿½Lucha contra la mï¿½quina!";
         }
     },
 
@@ -793,7 +793,7 @@ export default {
         this.turn = 0;
         this.mObjective = null;
         this.victory = false;
-        this.msg = "¡Lucha contra la máquina!";
+        this.msg = "ï¿½Lucha contra la mï¿½quina!";
         console.log("Listo para empezar a jugar");
     },
 }
@@ -815,6 +815,13 @@ export default {
         background-color: slategrey;
         display: inline-block;
         margin: 20px;
+        transition: 0.2s;
+    }
+
+    .circle:hover {
+        background-color: #bfbfbf;
+        box-shadow: 0px 0px 40px rgba(0,0,0,0.5);
+        cursor: pointer;
     }
 
     .circleP {
@@ -833,5 +840,29 @@ export default {
         background-color: #d96c68;
         display: inline-block;
         margin: 20px;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 50%;
+        background-color: #84b7d9;
+        border: none;
+        border-radius: 15px;
+        height: 40px;
+        color: #ffffff;
+        font-size: 24px;
+        box-shadow: 0px 0px 25px rgba(0,0,0,0.5);
+        transition: 0.2s;
+    }
+
+    button:hover {
+        margin-top: 17.5px;
+        background-color: #95cff5;
+        color: #d1d1d1;
+        width: 52%;
+        height: 45px;
+        top: 5px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
     }
 </style>
